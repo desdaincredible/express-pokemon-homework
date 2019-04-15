@@ -1,0 +1,27 @@
+h1 {
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background-color: grey;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+p {
+    color: white;
+}
+
+ul {
+    color: white;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+}
