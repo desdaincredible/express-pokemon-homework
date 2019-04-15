@@ -11,6 +11,12 @@ app.get('/pokemon', (req, res)=>{
 });
 
 
+// show route
+app.get('/pokemon/:id', (rec, res)=>{
+    res.render('show.ejs', {
+        'singlePokemon': pokemon[rec.params.id]
+    })
+})
 
 app.listen(3000, ()=>{
     console.log('server is running')
