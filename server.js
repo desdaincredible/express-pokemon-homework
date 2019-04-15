@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
 const pokemon = require('./pokemon');
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 // index route
@@ -13,11 +15,21 @@ app.get('/pokemon', (req, res)=>{
     })
 });
 
+// create route
+app.get('/pokemon/new', (req, res) =>{
+    res.render('new.ejs')
+});
+
+app.post('/pokemon', (req, res) =>{
+    pokemon.push(req.body);
+    console.log(pokemon);
+    res.redirect('/pokemon')
+})
 
 // show route
-app.get('/pokemon/:id', (rec, res)=>{
+app.get('/pokemon/:id', (req, res)=>{
     res.render('show.ejs', {
-        'singlePokemon': pokemon[rec.params.id]
+        'singlePokemon': pokemon[req.params.id]
     })
 })
 
