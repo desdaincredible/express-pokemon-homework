@@ -5,7 +5,9 @@ const pokemon = require('./pokemon');
 
 // index route
 app.get('/pokemon', (req, res)=>{
-    res.send(pokemon)
+    res.render('index.ejs', {
+        'pokemon':pokemon
+    })
 });
 
 
