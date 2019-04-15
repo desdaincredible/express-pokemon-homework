@@ -3,17 +3,21 @@ h1 {
     color: white;
     font-weight: 700;
     font-family: 'Quicksand', sans-serif;
+    letter-spacing: .5em;
+}
+h2 {
+    color: teal;
+    text-transform: uppercase;
+    letter-spacing: .5em;
 }
 
 body {
-    background-color: grey;
-    background-repeat: no-repeat;
-    background-position: center;
     font-family: 'Quicksand', sans-serif;
 }
 
 p {
     color: white;
+    letter-spacing: 0.25em;
 }
 
 ul {
@@ -21,7 +25,19 @@ ul {
 }
 
 .container {
-    height: 100%;
+    background-image: url(../images/pokeball.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 500px;
     width: 100%;
     padding: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.container2 {
+    text-align: center;
 }
