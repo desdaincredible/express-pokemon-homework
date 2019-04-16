@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const pokemon = require('./pokemon');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 
 
 // index route
@@ -14,6 +16,19 @@ app.get('/pokemon', (req, res)=>{
         'pokemon':pokemon,
     })
 });
+
+// edit route
+app.get('/pokemon/:id/edit', (req, res) => {
+    res.render('edit.ejs', {
+        'pokemon': pokemon[req.params.id],
+        'id': req.params.id,
+    })
+})
+
+app.put('/pokemon/:id', (req, res) => {
+    pokemon[req.params.id] = req.body;
+    res.redirect('/pokemon');
+})
 
 // create route
 app.get('/pokemon/new', (req, res) =>{
@@ -29,7 +44,8 @@ app.post('/pokemon', (req, res) =>{
 // show route
 app.get('/pokemon/:id', (req, res)=>{
     res.render('show.ejs', {
-        'singlePokemon': pokemon[req.params.id]
+        'singlePokemon': pokemon[req.params.id],
+        'id': req.params.id,
     })
 })
 
