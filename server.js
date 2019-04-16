@@ -14,6 +14,7 @@ app.use(methodOverride('_method'));
 app.get('/pokemon', (req, res)=>{
     res.render('index.ejs', {
         'pokemon':pokemon,
+        'id': req.params.id,
     })
 });
 
@@ -23,12 +24,12 @@ app.get('/pokemon/:id/edit', (req, res) => {
         'pokemon': pokemon[req.params.id],
         'id': req.params.id,
     })
-})
+});
 
 app.put('/pokemon/:id', (req, res) => {
     pokemon[req.params.id] = req.body;
     res.redirect('/pokemon');
-})
+});
 
 // create route
 app.get('/pokemon/new', (req, res) =>{
@@ -39,7 +40,7 @@ app.post('/pokemon', (req, res) =>{
     pokemon.push(req.body);
     console.log(pokemon);
     res.redirect('/pokemon')
-})
+});
 
 // show route
 app.get('/pokemon/:id', (req, res)=>{
@@ -47,7 +48,13 @@ app.get('/pokemon/:id', (req, res)=>{
         'singlePokemon': pokemon[req.params.id],
         'id': req.params.id,
     })
-})
+});
+
+// delete route
+app.delete('/pokemon/:id', (req, res) => {
+    pokemon.splice(req.params.id, 1);
+    res.redirect('/pokemon');
+});
 
 app.listen(3000, ()=>{
     console.log('server is running')
