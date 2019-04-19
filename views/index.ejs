@@ -11,6 +11,7 @@
 <body>
     <div class="container">
         <h1>Pokemon</h1>
+        <a href="/pokemon/new"><button>Add New Pokemon</button></a>
         <ul class="pokemon">
             <% for (let i = 0; i < pokemon.length; i++){ %>
                 <li><p><a href="/pokemon/<%= i %>"><%= pokemon[i].name %></a></p>                <a href="/pokemon/<%= i %>/edit"><button type="submit">Edit This Pokemon</button></a>
